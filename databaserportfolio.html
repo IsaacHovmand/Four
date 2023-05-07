@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head><title>Portfolio - Databaser - Isaac</title><link rel="stylesheet" href="websitestyle.css"><meta charset="UTF-8"><script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script></head>
+    </head>
+<body>
+<ul>
+  <li><a href="website.html">Home</a></li>
+  <li><a href="projekt1portfolio.html">Projekt 1</a></li>
+  <li><a href="itsecurityportfolio.html">IT security</a></li>
+  <li><a href="astropiportfolio.html">Astro-Pi</a></li>
+  <li><a href="samarbejdeportfolio.html">Spil, leg og samarbejde</a></li>
+  <li><a href="showcase.html">Spil showcase</a></li>
+</ul>
+<p>Youtube visningen duer kun på spørgsmål 4 og 8, angiveligt fordi de andre video har fraslået "popup" egenskaben. Koden fungerer dog som ønsket. Trykker man på "Watch on YouTube" kommer man nemlig ind på den ønskede video.</p>
+<p id="overskrift"></p>
+<iframe id="Youtube" width="560" height="315" src="https://www.youtube.com/watch?v=ylyaQ2KJW6c&t=37s&ab_channel=People" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br>
+<p>Tryk næste sang for at gå fra introen til første sang. Der er 20 valgmuligheder af kunstnere med tilsvarende numre, 4 til hvert spørgsmål, de første 4 til første spørgsmål, de næste 4 til andet spørgsmål osv. Indsæt det nummer i tekstfeltet, som du tror passer. Tryk så indsend og bagefter næste sang. <br>Jason Derulo=1. No Juice=2. The Weeknd=3. XXXTentacion=4.<br> A$ap Rocky=5. Kusorare=6. Drake=7. Swae Lee=8.<br> Bruce Willis=9. Vin Diesel=10. Dom Toretto=11. Mark Wahlberg=12.<br> Destroy Lonely=13. Ski Mask the Slump God=14. Ben 10=15. Moxy=16. <br>The Stone=17. Marks Mor=18. The Rock=19. The Boulder=20. <br> Kanye West=21. JAY-Z=22. J. Cole=23. Eminem=24.<br> Pusha T=25. Frank Ocean=26. Kendrick Lamar=27. Lauryn Hill=28.<br> Rodrigo Amarante=29. Manu Chao=30. Luis Fonsi=31. Frank Sinatra=32.</p>
+<input id="numb">
+<button type="button" onclick="Tjek()">Indsend</button>
+<button type="button" onclick="ny()">Næste sang</button>
+<p id="point"></p>
+
+</body>
+</html>
+
+<script>
+  let score;
+  let x;
+  let listeMedValgte = [];
+  let data;
+  var Link = null
+  var ID = null
+  var Navn = null
+  var pic;
+  let f;
+  let point;
+  let test;
+  point = 0
+  test = 0
+  x = 0
+
+
+function ny() {
+  x++
+  genererLink(x);
+  pic = Link
+  document.getElementById('Youtube').src = pic;
+}
+
+function Tjek() {
+	f = document.getElementById("numb").value;
+  if (ID == f){
+		point++
+		document.getElementById('point').innerHTML = "Point: " + point;
+	}
+
+  if (Nummer*2<=point) {
+    point = 0
+    document.getElementById('point').innerHTML =  "Nu ikke snyde";
+  }
+
+  if (point==8) {
+    document.getElementById('point').innerHTML = "Tillykke, du fik alle rigtigt"
+  }
+
+  if (point==9) {
+    document.getElementById('point').innerHTML = "Eller også snød du bare"
+  }
+  if (point==10) {
+    document.getElementById('point').innerHTML = "Stop"
+  }
+  if (point==11) {
+    document.getElementById('point').innerHTML = "..."
+  }
+  if (point==12) {
+    document.getElementById('point').innerHTML = "Din mor? https://www.facebook.com/photo?fbid=10159852237481692&set=a.438412531691"
+  }
+  if (point==12) {
+    document.getElementById('point').innerHTML = "Woah"
+  }
+  if (f!==ID) {
+    document.getElementById('point').innerHTML = "Du har tabt";
+    point = 0
+  }
+}
+
+function genererLink(x){
+  for (var i = 0; i < data.length; i++) {
+      if (data[i]["Nr"] == x) {
+        Link = data[i]['Link']; 
+        ID = data[i]['ID'];
+        Nummer = data[i]['Nr'];
+        break;
+      }
+    }
+}
+window.onload = function() {
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "SHEET.csv", true);
+xhr.responseType = "text";
+xhr.onload = function() {
+  data = Papa.parse(xhr.responseText, {
+    header: true // set this to true if the first row contains the header names
+  }).data;
+};
+xhr.send();
+}
+</script>

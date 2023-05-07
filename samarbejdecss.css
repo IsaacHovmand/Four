@@ -1,0 +1,65 @@
+body {background-color: rgb(0,0,0);}
+
+ul {
+  list-style: none;
+  overflow: hidden;
+  background-color: yellow;
+  font-family: Andale Mono, monospace;
+  font-weight: bold;}
+
+li {float: left;}
+
+li a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 16px;
+  text-decoration: none;
+  font-size: 25px;}
+
+canvas {border-style: solid;
+border-width: 4px;
+border-color: yellow;
+float: left;
+position: relative;
+bottom: 330px;
+}
+
+p1{
+float:right;
+color: yellow;
+text-align: left;
+font-size: 16px;
+padding-right: 30px;
+}
+
+p2{
+position: relative;
+left: 730px;
+top: 277px;
+color: yellow;
+text-align: left;
+font-size: 16px;
+padding-right: 30px;
+}
+
+p3{
+position: relative;
+left: 730px;
+top: 277px;
+color: yellow;
+text-align: left;
+font-size: 16px;
+padding-right: 30px;
+}
+
+.game{
+float: left;}
+
+.content {
+float:right;
+padding-right: 10px;
+}
+
+li a:hover {background-color: lightyellow;}
